@@ -21,12 +21,14 @@ li {
 
 a {
     text-decoration: none;
-    color: #252523;
+    /* color: #252523; */
+    color: #e0e1dd;
 }
 
 .header{
     border-bottom: 1px solid #E2E8F0;
     background-color: #f4f6fc;
+    padding: 10px;
 }
 
 .navbar {
@@ -138,6 +140,7 @@ footer {
 }
 .footer-item {
    margin: 20px auto;
+   color: #f4f6fc;
    
 }
 
@@ -155,6 +158,21 @@ footer {
 .btn:hover {
     background-color: #FF0BAC;
     color: #ffffff;
+}
+
+#cart {
+    position: relative;
+}
+
+#cart>#badge {
+    position: absolute;
+    left: auto;
+    bottom: 2rem;
+    font-weight: 4rem;
+    font-size: x-large;
+    right: 0;
+    background-color: #101010;
+    color:#ffffff;
 }
 
 /* .cart {
