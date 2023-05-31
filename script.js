@@ -55,39 +55,77 @@ display.addEventListener("click", function () {
 
 console.log(display);
 
+// window.onload = function (cart_store) {
+//   cart_store = JSON.parse(localStorage.getItem("cart"))
+//   let badge = document.getElementById("badge");
+//   badge.innerHTML = cart_store.length
+//   let cart_item = document.createElement("div");
+//   cart_item.setAttribute("class", "content")
+//   cart_item.innerHTML = `<div id="trayHead">
+//       <i class="fa-thin fa-rectangle-xmark"></i>
+//       <h4>Product</h4>
+//   </div>
+//   <div class="head">
+//   <div class="serial">
+//   <h4>Items</h4>
+//   <h4>Price</h4>
+//   <h4>Sn</h4>`
+//   for(let i = 0; i < cart_store.length; i++) {
+//     cart_item.innerHTML += `<div id="img">
+//       <figure>
+//       <img src="${cart_store[i]["image"]}" width="30%">
+//       <figcaption>${cart_store[i]["title"]}</figcaption>
+//       </figure>
+//       <div id="price">
+//         <h4>Price: ${cart_store[i]["price"]}</h4>
+//       </div>
+//       <div id="incred">
+//         <i class="fas fa-angle-up"></i>
+//         <i class="fas fa-angle-down"></i>
+//       </div>
+//       <button>clear</button>
+//     </div>`;
+
+//   };
+// }
+
 window.onload = function (cart_store) {
-  cart_store = JSON.parse(localStorage.getItem("cart"))
+  cart_store = JSON.parse(localStorage.getItem("cart"));
   let badge = document.getElementById("badge");
-  badge.innerHTML = cart_store.length
+  badge.innerText = cart_store.length;
   let cart_item = document.createElement("div");
-  cart_item.setAttribute("class", "content")
-  cart_item.innerHTML = `<div id="trayHead">
-      <i class="fa-thin fa-rectangle-xmark"></i>
-      <h4>Product</h4>
-  </div>
-  <div class="head">
-  <div class="serial">
-  <h4>Items</h4>
-  <h4>Price</h4>
-  <h4>Sn</h4>`
-  for(let i = 0; i < cart_store.length; i++) {
-    cart_item.innerHTML += `<div id="img">
+  cart_item.setAttribute("class", "content");
+  cart_item.innerHTML = `<div id='trayHead'>
+      <i class="fa fa-window-close fa-2x close" aria-hidden="true"></i>
+        <h3>PRODUCTS</h3>
+      </div>
+      <div class="head">
+      <div class="serial">
+      <h3>ITEMS</h3>
+      <h3>PRICE</h3>
+      <h3>SN</h3>
+      </div>`;
+  for (let i = 0; i < cart_store.length; i++) {
+    cart_item.innerHTML += `<div id="imag">
       <figure>
-      <img src="${cart_store[i]["image"]}" width="30%">
-      <figcaption>${cart_store[i]["title"]}</figcaption>
+        <img src='${cart_store[i]["image"]}' width='30%'>
+          <figcaption>${cart_store[i]["title"]}</figcaption>
       </figure>
       <div id="price">
-        <h4>Price: ${cart_store[i]["price"]}</h4>
+        <h3>PRICE:${cart_store[i]["price"]}</h3>
       </div>
       <div id="incred">
         <i class="fas fa-angle-up"></i>
         <i class="fas fa-angle-down"></i>
       </div>
+      </div>
       <button>clear</button>
-    </div>`;
-
-  };
-}
+      </div>`;
+    console.log(cart_store[i]);
+  }
+  cart_tray.appendChild(cart_item);
+  console.log(cart_store.length);
+};
 
 async function stored(item) {
   await fetch(`https://api.escuelajs.co/api/v1/products/${item}`).then(product_img => product_img.json()).then(
